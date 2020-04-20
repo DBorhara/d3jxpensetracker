@@ -1,0 +1,86 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+
+    <title>$$$pent</title>
+    <style>
+      h2,
+      p {
+        margin: 10px, 0;
+      }
+      header {
+        margin-bottom: 40px;
+      }
+    </style>
+  </head>
+  <body class="green lighten-1">
+    <header class="green darken-2 section">
+      <h1 class="center white-text">$$$pent</h1>
+      <h4 class="grey-text center text-lighten-2">
+        Responsive Budget Tracker
+      </h4>
+    </header>
+
+    <div class="container section">
+      <div class="row">
+        <div class="col s12 m6">
+          <form class="card z-depth-0">
+            <div class="card-content">
+              <span class="card-title red-text"> Add Expense:</span>
+              <div class="input-field">
+                <input type="text" id="name" />
+                <label for="id">Expense Name</label>
+              </div>
+              <div class="input-field">
+                <input type="text" id="cost" />
+                <label for="id">Expense Amount</label>
+              </div>
+              <div class="input-field center">
+                <button class="btn-large pink white-text">Add Expense</button>
+              </div>
+              <div class="input-field center">
+                <p class="red-text" id="error"></p>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col s12 m5 push-m1">
+          <div class="canvas"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: 'AIzaSyDOzs8o_TkysK3a6WpcggVI1NoNDF9nyPg',
+        authDomain: 'budgettracker-76199.firebaseapp.com',
+        databaseURL: 'https://budgettracker-76199.firebaseio.com',
+        projectId: 'budgettracker-76199',
+        storageBucket: 'budgettracker-76199.appspot.com',
+        messagingSenderId: '574235428682',
+        appId: '1:574235428682:web:070c41256a20d4906723b3',
+        measurementId: 'G-9B9MHC52J3',
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.firestore();
+    </script>
+
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="index.js"></script>
+    <script src="graph.js"></script>
+  </body>
+</html>
