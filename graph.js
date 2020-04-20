@@ -17,13 +17,38 @@ const pie = d3
   .sort(null)
   .value((d) => d.cost);
 
-const angles = pie([
-  { name: 'Rent', cost: 900 },
-  { name: 'Food', cost: 400 },
-  { name: 'Gas', cost: 100 },
-]);
-
 const arcPath = d3
   .arc()
   .outerRadius(radius)
   .innerRadius(radius / 2);
+
+//Update Function
+const update = (data) => {
+  const paths = graph.selectAll('path').data(pie(data))
+};
+
+// data array and firestore call
+let data = [];
+
+db.collection('expenses').onSnapshot((response) => {
+  response.docChanges().forEach((change) => {
+    const doc = { ...change.doc.data(), id: change.doc.id };
+
+    let index = data.findIndex((item) => item.id === doc.id);
+    switch (change.type) {
+      case 'added':
+        data.push(doc);
+        break;
+      case 'removed':
+        data[index] = doc;
+        break;
+      case 'modified':
+        data = data.filter((item) => item.id !== doc.id);
+        break;
+      default:
+        break;
+    }
+  });
+
+  update(data);
+});
